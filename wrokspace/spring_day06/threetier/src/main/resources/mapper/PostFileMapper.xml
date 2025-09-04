@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.threetier.mapper.PostFileMapper">
+    <insert id="insertPostFile">
+        insert into tbl_post_file (id, post_id)
+        values (#{id}, #{postId})
+    </insert>
+
+    <select id="selectPostFilesByPostId">
+        select f.id, f.file_path, f.file_name, f.file_original_name, f.file_size, f.file_content_type, f.created_datetime, f.updated_datetime
+        from tbl_file f join tbl_post_file pf
+        on f.id = pf.id and pf.post_id = #{postId}
+    </select>
+
+    <delete id="deletePostFile">
+        delete from tbl_post_file
+        where post_id = #{postId}
+    </delete>
+
+</mapper>

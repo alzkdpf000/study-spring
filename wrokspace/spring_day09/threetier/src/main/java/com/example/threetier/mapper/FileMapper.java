@@ -1,0 +1,19 @@
+package com.example.threetier.mapper;
+
+import com.example.threetier.domain.FileVO;
+import com.example.threetier.dto.FileDTO;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.Optional;
+
+@Mapper
+public interface FileMapper {
+//    추가
+    public void insertFile(FileDTO fileDTO);
+
+//    삭제
+    public void deleteFile(Long id);
+
+//    조회
+    public Optional<FileDTO> selectFileById(Long id);
+}

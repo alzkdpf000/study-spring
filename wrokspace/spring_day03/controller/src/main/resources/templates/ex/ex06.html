@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EX06</title>
+    <link rel="stylesheet" href="/css/ex06.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>국어</td>
+            <td>영어</td>
+            <td>수학</td>
+            <td>총점</td>
+            <td>평균</td>
+        </tr>
+        <tr th:object="${student}">
+            <td th:text="*{name}"></td>
+            <td th:text="*{kor}"></td>
+            <td th:text="*{eng}"></td>
+            <td th:text="*{math}"></td>
+            <td th:text="*{total}"></td>
+            <td th:text="*{average}"></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysql.mapper.MemberMapper">
+    <insert id="join" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_member (member_email, member_password, member_name)
+        values (#{memberEmail}, #{memberPassword}, #{memberName})
+    </insert>
+
+    <select id="login">
+        select id, member_email, member_password, member_name, member_status, created_date, updated_date
+        from tbl_member
+        where member_email = #{memberEmail} and member_password = #{memberPassword}
+    </select>
+
+    <select id="selectMemberByStatus">
+        select id, member_email, member_password, member_name, member_status, created_date, updated_date
+        from tbl_member
+        where member_status = #{memberStatus}
+    </select>
+
+    <!--모듈화-->
+<!--    <sql id="search">-->
+<!--        /*where절 안에 조건식이 없으면 where절 작성 안됨*/-->
+<!--        <where>-->
+<!--            /*내부의 SQL문 앞 또는 뒤에 원하는 쿼리를 붙이거나 삭제할 때 사용*/-->
+<!--            <trim prefixOverrides="or">-->
+<!--                /*categories 배열을 받아와서 하나씩 값을 가져오는 반복문*/-->
+<!--                <foreach item="category" collection="categories">-->
+<!--                    or member_email like concat('%', #{category}, '%')-->
+<!--                </foreach>-->
+<!--            </trim>-->
+<!--        </where>-->
+<!--    </sql>-->
+
+<!--    <select id="">-->
+<!--        select * from tbl_member-->
+<!--        /*모듈을 불러와서 구성*/-->
+<!--        <include refid="search"></include>-->
+<!--    </select>-->
+</mapper>

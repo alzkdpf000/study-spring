@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 목록</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+    <header th:replace="~{/fixed/header.html :: header}"></header>
+    <form action="/post/list/1" id="search" th:object="${search}">
+        <div id="categoryWrap"></div>
+        <select name="month">
+            <option value="" selected>선택 안함</option>
+            <option value="1" th:selected="*{month == '1'}">1</option>
+            <option value="3" th:selected="*{month == '3'}">3</option>
+            <option value="6" th:selected="*{month == '6'}">6</option>
+        </select>
+        <input type="text" name="keyword" th:value="*{search.keyword}" placeholder="검색어 입력해주세요">
+        <button>검색</button>
+    </form>
+    <table id="post-container">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>조회수</th>
+                <th>작성자</th>
+                <th>등록날짜</th>
+                <th>카테고리</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+<!--    무한 스크롤-->
+    <div id="loading" style="display: none; width: 100px; height: 100px; margin: 0 auto; position: fixed; right: 5px; top: 15px;">
+        <img src="/images/loading.gif" style="width: 100%; height: 100%">
+    </div>
+<!--    더보기-->
+<!--    <div><button id="getMoreButton" style="width: 150px; height: 40px; font-size: 1.5rem; margin: 0 auto;">더보기</button></div>-->
+<!--    <div id="loading" style="display: none; width: 100px; height: 100px; margin: 0 auto;">-->
+<!--        <img src="/images/loading.gif" style="width: 100%; height: 100%">-->
+<!--    </div>-->
+<!--    페이징 처리-->
+<!--    <div id="page-container" style="text-align: center"></div>-->
+</body>
+<script th:inline="javascript">
+    const postsCriteriaDTO = [[${postsCriteriaDTO}]];
+    const posts = postsCriteriaDTO.posts;
+    const criteria = postsCriteriaDTO.criteria;
+    const search = [[${search}]];
+    const keyword = search.keyword;
+    const month = search.month || "";
+    const categories = search.categories;
+    const categoryNames = postsCriteriaDTO.categoryNames;
+</script>
+<script src="/js/post/list/module/service.js"></script>
+<script src="/js/post/list/module/layout.js"></script>
+<script src="/js/post/list/event.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

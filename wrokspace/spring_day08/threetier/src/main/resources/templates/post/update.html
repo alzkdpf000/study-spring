@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 수정</title>
+</head>
+<body>
+<header th:replace="~{/fixed/header.html :: header}"></header>
+<form action="/post/update" method="post" name="updateForm" th:object="${post}" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="*{id}">
+    <input type="text" placeholder="게시글 제목" th:field="*{postTitle}">
+    <input type="hidden" name="memberId" th:value="${session.member.id}">
+    <textarea th:field="*{postContent}"></textarea>
+    <div id="imageContainer"></div>
+    <input type="file" name="file" multiple>
+    <button id="updateButton" type="button">완료</button>
+</form>
+</body>
+<script th:inline="javascript">
+    const post = [[${post}]];
+</script>
+<script src="/js/post/update/event.js"></script>
+</html>

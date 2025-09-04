@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 조회</title>
+</head>
+<header th:replace="~{/fixed/header.html :: header}"></header>
+<body th:object="${post}">
+    <p th:text="*{postTitle}"></p>
+    <p th:text="*{postReadCount}"></p>
+    <p th:text="*{memberName}"></p>
+    <div th:text="*{postContent}"></div>
+    <p th:text="*{createdDate}"></p>
+    <div id="imageContainer"></div>
+    <button onclick="window.location.href = '/post/list/1'">목록으로</button>
+    <div class="button-wrap"></div>
+</body>
+<script th:inline="javascript">
+    const memberId = [[${session.member.id}]];
+    const post = [[${post}]];
+</script>
+<script src="/js/post/read/event.js"></script>
+</html>

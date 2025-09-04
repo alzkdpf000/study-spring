@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 목록</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+    <header th:replace="~{/fixed/header.html :: header}"></header>
+    <div id="search"></div>
+    <table id="post-container">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>조회수</th>
+                <th>작성자</th>
+                <th>등록날짜</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div id="loading" style="display: none; width: 100px; height: 100px; margin: 0 auto; position: fixed; right: 5px; top: 15px;">
+        <img src="/images/loading.gif" style="width: 100%; height: 100%">
+    </div>
+<!--    <div id="page-container"></div>-->
+</body>
+<!--<script th:inline="javascript">-->
+<!--    const postsCriteriaDTO = [[${postsCriteriaDTO}]];-->
+<!--    const posts = postsCriteriaDTO.posts;-->
+<!--    const criteria = postsCriteriaDTO.criteria;-->
+<!--</script>-->
+
+<script src="/js/post/list/module/service.js"></script>
+<script src="/js/post/list/module/layout.js"></script>
+<script src="/js/post/list/event.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

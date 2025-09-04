@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.threetier.mapper.CategoryMapper">
+    <select id="selectAll">
+        select id, category_name, created_datetime, updated_datetime from tbl_category
+    </select>
+    <select id="selectPostId">
+        select p.id, c.category_name
+        from tbl_post p join tbl_post_category pc
+        on p.id = pc.post_id and p.post_status = 'active' and p.id = #{id}
+        join tbl_category c
+        on pc.category_id = c.id
+    </select>
+</mapper>

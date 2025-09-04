@@ -1,0 +1,48 @@
+헤더가 있고, 알림이 있으면 항상 알림 목록을 불러와야 한다.
+
+
+
+인터셉터를 만들고, 해당 인터셉터가 동작하게 경로를 설정
+1. 어떤 페이지에 헤더(알림)가 있는가
+2-1. 알림 아이콘 누르면 목록이 아래에 나옴(인터셉터 필요)
+   private final AlarmService alarmService;
+
+   AlarmIntercepter
+   preHandle(request){
+      //로드 밸런싱
+      Member member = redis에서 가져오기
+      Redis 조회 바로 request.setAttribute("alarms", alarm);
+      없으면 DB 조회 후 Redis에 저장      
+      List<Alarm> alarms = alarmService.getAlarmList(member.getId());   
+      return true;
+
+      //일반
+      DB 조회해서 request.setAttribute("alarms", alarm);
+   }
+
+   @RestController
+      @GetMapping()
+      return alarams;
+
+2-2. 알림 목록 페이지로 이동(인터셉터 X)
+
+
+결제
+   case: "done":
+      하고 싶은 거 하기
+      결제 정보 담기(사용자 정보, 배송지, 상품 정보)
+         컨트롤러로 window.location.href = "";
+         HTML form태그 만들어놓고 input hidden 설정
+         input.value = ...
+         form.submit();
+
+
+후처리
+
+//        인서트 후 결제가 1군데가 아니라 여러군데면 pre는 오류 발생이 관리가 복잡함 결제하고 나서 인증 정보 같은거를 쏴주는 것을 보내주기 차라리 aop를 쓰기
+//        간단한 경우에만(꼭 사용해야하는 경우)     복잡한 경우는 aop
+
+
+
+
+

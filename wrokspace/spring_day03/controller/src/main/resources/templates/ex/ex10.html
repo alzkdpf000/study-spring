@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EX10</title>
+</head>
+<body>
+<form action="/ex/ex10" method="post">
+    <input type="text" name="id" value="1">
+    <input type="text" name="name" value="언북중학교">
+    <input type="text" name="students[0].name" value="둘리">
+    <input type="text" name="students[0].kor" value="100">
+    <input type="text" name="students[0].eng" value="50">
+    <input type="text" name="students[0].math" value="10">
+    <input type="text" name="students[1].name" value="또치">
+    <input type="text" name="students[1].kor" value="60">
+    <input type="text" name="students[1].eng" value="50">
+    <input type="text" name="students[1].math" value="20">
+    <button>전송</button>
+</form>
+</body>
+<script>
+    // const students = await response.json()
+    // let text = ``;
+    // students.forEach((student, i) => {
+    //     text += `<input type="text" name="students[${i}].name" value="${student.name}">`
+    // })
+    // form.innerHTML = text;
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

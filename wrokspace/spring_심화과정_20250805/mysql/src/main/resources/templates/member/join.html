@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JOIN</title>
+</head>
+<body>
+<form action="/member/join" method="post" th:object="${member}">
+    <input type="text" th:field="*{memberName}">
+    <input type="text" th:field="*{memberEmail}">
+    <input type="password" th:field="*{memberPassword}">
+    <label>
+        <input type="radio" th:field="*{memberStatus}" value="active"> 활성화
+    </label>
+    <label>
+        <input type="radio" th:field="*{memberStatus}" value="inactive"> 비활성화
+    </label>
+    <button>완료</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.threetier.mapper.ReplyMapper">
+    <insert id="insertReply">
+        insert into tbl_reply(reply_content, member_id, post_id)
+        values (#{replyContent}, #{memberId}, #{postId})
+    </insert>
+
+    <select id="selectRepliesByPostId">
+        select id, reply_content, member_id, member_name, post_id, created_datetime, updated_datetime
+        from view_reply_member
+        where post_id = #{postId}
+        order by id desc
+        limit #{criteria.count} offset #{criteria.offset}
+    </select>
+
+    <update id="updateReply">
+        update tbl_reply
+        set reply_content = #{replyContent}, updated_datetime = current_timestamp
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from tbl_reply where id = #{id}
+    </delete>
+
+    <select id="selectCountAllByPostId">
+        select count(*) from tbl_reply
+        where post_id = #{postId}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

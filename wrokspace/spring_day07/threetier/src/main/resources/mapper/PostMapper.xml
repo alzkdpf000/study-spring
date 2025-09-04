@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.threetier.mapper.PostMapper">
+    <select id="selectAll">
+        select m.member_name, p.id, p.post_title, p.post_content,
+               p.post_read_count, p.post_status, p.member_id, p.created_datetime, p.updated_datetime
+        from tbl_member m join tbl_post p
+        on m.id = p.member_id and post_status = 'active'
+        order by p.id desc
+        limit #{count} offset #{offset}
+    </select>
+
+    <select id="selectCountAll">
+        select count(*) from tbl_post
+        where post_status = 'active'
+    </select>
+
+    <insert id="insertPost" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_post (post_title, post_content, member_id)
+        values(#{postTitle}, #{postContent}, #{memberId})
+    </insert>
+
+    <select id="selectPost">
+        select m.member_name, p.id, p.post_title, p.post_content, p.post_read_count,
+               p.post_status, p.member_id, p.created_datetime, p.updated_datetime
+        from tbl_member m join tbl_post p
+        on m.id = p.member_id
+        where p.id = #{id} and post_status = 'active'
+    </select>
+
+    <update id="updatePostReadCount">
+        update tbl_post
+        set post_read_count = post_read_count + 1
+        where id = #{id}
+    </update>
+
+    <update id="updatePost">
+        update tbl_post
+        set post_title = #{postTitle}, post_content = #{postContent}, updated_datetime = current_timestamp
+        where id = #{id}
+    </update>
+
+    <update id="deletePost">
+        update tbl_post
+        set post_status = 'inactive'
+        where id = #{id}
+    </update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
